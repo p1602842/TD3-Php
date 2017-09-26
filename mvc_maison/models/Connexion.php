@@ -5,14 +5,14 @@ class Connexion
   private $_bdd = null;
   private static $_instance = null;
 
-  //appelée lors de la création d'objet
+  //appelée par new
   private function __construct ()
   {
 	$this->_bdd = new PDO('mysql:host='.BD_HOST.'; dbname='.BD_DBNAME.'; charset=utf8', BD_USER, BD_PWD);
 	$this->_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 
-  //appelée au clonage d'objet
+  //appelée par clone
   private function __clone()
   {
   }
@@ -31,7 +31,7 @@ class Connexion
 
   public function getBdd()
   {
-    return self::$_instance->_bdd;
+    return $this->_bdd;
   }
 
 }
