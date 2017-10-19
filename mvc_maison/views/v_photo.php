@@ -20,20 +20,31 @@
 
 
 <!--  Début de la page -->
-  <h1><?php  echo TITRE_PAGE_HELLO;?></h1>
 
-<!--  Liste  -->
-  <ul>
+
 <?php
-// affichage de la boucle de messages
-for($i=0;$i<=$photoid->getPhotoId(); $i++)
-{
-	echo '<li>'.$photoid->getnomFich().'</li>';
+if(isset($_GET['nomPhoto'])){
+  foreach ($photo as $sel){
+    if($sel->getNomFich() == $_GET['nomPhoto']){
+      $image = PATH_IMAGES.$sel->getNomfich();
+      $desc = $sel->getDescription()?>
+
+      <div class = "col-md-6 col-sm-6 col-xs-12">
+        <table class="table table-bordered"><tr><td>Description</td><td>
+              <?php echo $sel->getDescription()?></td></tr>
+          <tr><td>Nom du fichier</td><td><?php echo $sel->getNomfich()?></td></tr>
+          <tr><td>Categorie</td><td><?php
+
+              foreach($categorie as $nomCat){
+                if($nomCat->getCatid() == $sel->getCatid()){
+                  $lien = "index.php?nomCate=".$nomCat->getNomCat();
+                  ?><a href=<?php echo $lien?>><?php echo $nomCat->getNomCat();?></a><?php
+                }
+              }
+              ?></td></tr></table></div>
+      <img src="<?php echo $image ?>" alt="<?php echo $desc?>"/><?php
+    }
+  }
 }
 ?>
-  </ul>
-<!--  Fin de la page -->
-
-
-<!--  Pied de page -->
-<?php require_once(PATH_VIEWS.'footer.php');
+<?php require_once(PATH_VIEWS.'footer.php');?>

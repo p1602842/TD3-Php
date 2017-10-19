@@ -42,7 +42,7 @@
 if((isset($_POST['photo']) and $_POST['photo'] != 0)) {
     if (($_POST['photo']) == 1) {
         $nbr = (new PhotoDAO())->getnbphotos1();
-//sel pour selectionee
+
         echo '<div class="alert alert-success"><strong>';
         echo $nbr;
         echo '</strong></div>';
@@ -50,8 +50,10 @@ if((isset($_POST['photo']) and $_POST['photo'] != 0)) {
             if ($sel->getcatid() == 1) {
 
                 $img = PATH_IMAGES.$sel->getNomfich();
+                $lien = "index.php?page=photo&nomPhoto=".$sel->getNomFich();
+
                 ?>
-                <img src="<?php echo $img ?>" alt=""><?php
+ <a href=<?php echo $lien?>><img src="<?php echo $img ?>" alt=""></a><?php
             }
 
         }
@@ -65,8 +67,9 @@ if((isset($_POST['photo']) and $_POST['photo'] != 0)) {
         foreach ($photo as $sel) {
             if ($sel->getcatid() == 2) {
                 $img = PATH_IMAGES . $sel->getNomfich();
+                $lien = "index.php?page=photo&nomPhoto=".$sel->getNomFich();
                 ?>
-                <img src="<?php echo $img ?>" alt=""><?php
+<a href=<?php echo $lien?>><img src="<?php echo $img ?>" alt=""></a><?php
             }
         }
     } else if (($_POST['photo']) == 3) {
@@ -78,12 +81,12 @@ if((isset($_POST['photo']) and $_POST['photo'] != 0)) {
         foreach ($photo as $sel) {
             if ($sel->getcatid() == 3) {
                 $img = PATH_IMAGES . $sel->getNomfich();
-            }
-            ?>
-            <img src="<?php echo $img ?>" alt=""><?php
+                $lien = "index.php?page=photo&nomPhoto=".$sel->getNomFich();?>
+                <a href=<?php echo $lien?>><img src="<?php echo $img ?>" alt=""></a><?php
+
         }
     }
-}
+}}
 
 else  {
     $nbr = (new PhotoDAO())->getnbphotos();
@@ -95,8 +98,9 @@ else  {
     foreach ($photo as $sel) {
 
         $img = PATH_IMAGES . $sel->getNomfich();
+        $lien = "index.php?page=photo&nomPhoto=".$sel->getNomFich();
         ?>
-        <img src="<?php echo $img ?>" alt=""><?php
+    <a href=<?php echo $lien?>><img src="<?php echo $img ?>" alt=""></a><?php
     }
 }
 
