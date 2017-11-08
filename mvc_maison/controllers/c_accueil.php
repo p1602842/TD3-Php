@@ -12,8 +12,8 @@
 
 require_once(PATH_MODELS.'photoDAO.php');
 require_once(PATH_MODELS.'CategorieDAO.php');
-$photoDAO=new photoDAO();
-$catDAO = new CategorieDAO();
+$photoDAO=new photoDAO(DEBUG);
+$catDAO = new CategorieDAO(DEBUG);
 $categorie = $catDAO->getCategorie();
 
 $photo=$photoDAO->getPhotos();

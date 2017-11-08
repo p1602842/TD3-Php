@@ -8,5 +8,6 @@ define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");
 
 define('TITRE', 'Titre');
+define('TITRE_AJOUT','Ajouter une photo');
 
 define('TITRE_PAGE_ACCUEIL_TOUS','Toutes les photos');
